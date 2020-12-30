@@ -1,5 +1,4 @@
-{
-    "names": [
+[
       {
         "name": "Ville",
         "amount": 24
@@ -81,5 +80,4 @@
         "amount": 4
       }
     ]
-  }
   

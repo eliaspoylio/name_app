@@ -1,6 +1,14 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## TODO
+# error response
+
+What about scandic letters in names?
+
+When building and displaying react frontend as default
+//server.use(express.static(path.join(__dirname, 'build')));
+//default
+//res.sendFile(path.join(__dirname, 'build/index.html'));
 
 ## Available Scripts
 
