@@ -4,7 +4,6 @@ const server = express();
 const path = require('path');
 var cors = require('cors')
 
-
 server.use(express.json());
 server.use(cors())
 
@@ -19,12 +18,9 @@ server.get('/api/all', (req, res) => {
 //Return the amount of the name given as a parameter
 server.get('/api/:name', (req, res) => {
     console.log("/api/"+req.params.name);
-    var nameTofind = Object.values(names).filter(obj => obj.name === req.params.name);
-    console.log(nameTofind[0].amount);
+    var nameTofind = Object.values(names)[0].filter(obj => obj.name === req.params.name);
     res.json({ name: req.params.name, amount: nameTofind[0].amount });
 });
-
-
 
 //default
 server.get('*', (req, res) => {

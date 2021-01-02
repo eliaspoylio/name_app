@@ -8,29 +8,35 @@ function getAll() {
     .then(data => data.json())
 }
 
+function byAmount(value) {
+  return function() {
+    console.log(value.sort((a, b) => (a.amount > b.amount) ? 1 : (a.amount === b.amount) ? ((a.amount > b.amount) ? 1 : -1) : -1 ))
+  }
+};
+
+function byName(value) {
+  return function() {
+    console.log(value.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.name > b.name) ? 1 : -1) : -1 ))
+  }
+};
+
 function App() {
-  const [allNames, setAllNames] = useState([]);
+  const [allNames, setAllNames] = useState({names: []});
 
   useEffect(() => {
     let mounted = true;
     getAll()
       .then(names => {
         if(mounted) {
-          setAllNames(names)
-          
+          setAllNames(names)          
         }
       })
     return () => mounted = false;
   }, [])
 
-  console.log(Object.values(allNames))
-  
-  const byAmount = Object.values(allNames).sort((a, b) => (a.amount > b.amount) ? 1 : (a.amount === b.amount) ? ((a.amount > b.amount) ? 1 : -1) : -1 )
-  byAmount.reverse()
-  console.log(byAmount)
 
-  const byName = Object.values(allNames).sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.name > b.name) ? 1 : -1) : -1 )
-  console.log(byName)
+  //const byAmount = allNames.names.sort((a, b) => (a.amount > b.amount) ? 1 : (a.amount === b.amount) ? ((a.amount > b.amount) ? 1 : -1) : -1 )
+  //byAmount.reverse()
 
   return (
     <div className="App">
@@ -48,9 +54,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={byAmount(allNames.names)}>By amount</button>
+      <button onClick={byName(allNames.names)}>By name</button>
       <h1>All names and amounts</h1>
         <ul>
-        {Object.values(allNames).map(name => <li key={name.name}>{name.name}: {name.amount}</li>)}
+        {allNames.names.map(name => <li key={name.name}>{name.name}: {name.amount}</li>)}
         </ul>
     </div>
   );
