@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import logo from './logo.svg';
 import './App.css';
@@ -37,6 +37,7 @@ function App() {
   const [order, setOrder] = useState()
   const [search, setSearch] = useState('');
   const [searchedName, setSearchedName] = useState([]);
+  const [sum, setSum] = useState([]);
 
   useEffect(() => {
     let mounted = true
@@ -49,15 +50,25 @@ function App() {
     return () => mounted = false
   }, [])
 
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      setSum(namesToShow.map(name => name.amount).reduce((acc, name) => name + acc));
+    }
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault()
     let mounted = true
     getName(search)
-    .then(name => {
-      if (mounted) {
-        setSearchedName(name)
-      }
-    })
+      .then(name => {
+        if (mounted) {
+          setSearchedName(name)
+        }
+      })
     console.log(searchedName)
     return () => mounted = false
   };
@@ -78,6 +89,7 @@ function App() {
         <button type="submit">Search</button>
       </form>
       <p>{searchedName.name}, {searchedName.amount}</p>
+      <p>{sum}</p>
       <button onClick={() => setOrder('Name')}>By Name</button>
       <button onClick={() => setOrder('Amount')}>By Amount</button>
       <h1>Names by {order}</h1>
