@@ -8,12 +8,17 @@ function getAll() {
     .then(data => data.json())
 }
 
+function getName(name) {
+  return fetch('http://localhost:2020/api/' + name)
+    .then(data => data.json())
+}
+
 function ChangeOrder({ data, orderBy }) {
   useEffect(() => {
     console.log("order changed to", orderBy);
   }, [orderBy]);
 
-  if (orderBy === 'byName') {
+  if (orderBy === 'Name') {
     data.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.name > b.name) ? 1 : -1) : -1)
   }
   else {
@@ -27,12 +32,11 @@ function ChangeOrder({ data, orderBy }) {
   );
 }
 
-
-
 function App() {
-  //const [allNames, setAllNames] = useState({ names: [] })
   const [namesToShow, setNamesToShow] = useState([])
   const [order, setOrder] = useState()
+  const [search, setSearch] = useState('');
+  const [searchedName, setSearchedName] = useState([]);
 
   useEffect(() => {
     let mounted = true
@@ -45,6 +49,19 @@ function App() {
     return () => mounted = false
   }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let mounted = true
+    getName(search)
+    .then(name => {
+      if (mounted) {
+        setSearchedName(name)
+      }
+    })
+    console.log(searchedName)
+    return () => mounted = false
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,13 +70,20 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
       </header>
-      <button onClick={() => setOrder('byName')}>By Name</button>
-      <button onClick={() => setOrder('byAmount')}>By Amount</button>
-      <h1>All names and amounts</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p>Search by name</p>
+          <input type="text" onChange={event => setSearch(event.target.value)} value={search} />
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      <p>{searchedName.name}, {searchedName.amount}</p>
+      <button onClick={() => setOrder('Name')}>By Name</button>
+      <button onClick={() => setOrder('Amount')}>By Amount</button>
+      <h1>Names by {order}</h1>
       <ChangeOrder data={namesToShow} orderBy={order} />
     </div>
   );
 }
-
 
 export default App;
