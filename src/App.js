@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import logo from './logo.svg';
 import './App.css';
 
@@ -77,11 +76,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          This page displays data fetched from API.
+        </p>
+        <p>
+          This page displays data fetched from API.
         </p>
       </header>
-      <div className="container">
-        <div className="item">
+      <div className="App-container">
+        <div className="App-item">
           <form onSubmit={handleSubmit}>
             <label>
               <p>Search by name</p>
@@ -90,26 +92,27 @@ function App() {
             <button type="submit">Search</button>
           </form>
         </div>
-        <div className="item">
+        <div className="App-item">
           <p>{searchedName.name}, {searchedName.amount}</p>
         </div>
-        <div className="item">
+        <div className="App-item">
           <p>Sum of all the names</p>
         </div>
-        <div className="item">
+        <div className="App-item">
           <p>{sum}</p>
         </div>
-        <div className="item">
+        <div className="App-item">
           <button onClick={() => setOrder('Name')}>By Name</button>
           <button onClick={() => setOrder('Amount')}>By Amount</button>
         </div>
-        <div className="item">
-          <h1>Names by {order}</h1>
+        <div className="App-item">
+          <p>Names by {order}</p>
           <ChangeOrder data={namesToShow} orderBy={order} />
         </div>
       </div>
-      <div className="footer">
+      <div className="App-footer">
         <img src={logo} className="App-logo" alt="logo" />
+        <p>Made with React</p>
       </div>
     </div>
   );
