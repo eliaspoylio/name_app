@@ -38,9 +38,18 @@
 
 .item {
   flex: 0 49%;
-  height: 100px;
-  margin-bottom: 2%; /* (100-32*3)/2 */
+  min-height: 30vh;
 }
+
+.footer {
+
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 @keyframes App-logo-spin {
