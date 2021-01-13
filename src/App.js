@@ -58,7 +58,7 @@ function App() {
     } else {
       setSum(namesToShow.map(name => name.amount).reduce((acc, name) => name + acc));
     }
-  }, [namesToShow] )
+  }, [namesToShow])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -76,13 +76,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
       </header>
-      <div className="App-content">
-        <div className="App-element">
+      <div className="container">
+        <div className="item">
           <form onSubmit={handleSubmit}>
             <label>
               <p>Search by name</p>
@@ -90,18 +89,27 @@ function App() {
             </label>
             <button type="submit">Search</button>
           </form>
+        </div>
+        <div className="item">
           <p>{searchedName.name}, {searchedName.amount}</p>
         </div>
-        <div className="App-element">
+        <div className="item">
           <p>Sum of all the names</p>
+        </div>
+        <div className="item">
           <p>{sum}</p>
         </div>
-        <div className="App-element">
+        <div className="item">
           <button onClick={() => setOrder('Name')}>By Name</button>
           <button onClick={() => setOrder('Amount')}>By Amount</button>
+        </div>
+        <div className="item">
           <h1>Names by {order}</h1>
           <ChangeOrder data={namesToShow} orderBy={order} />
         </div>
+      </div>
+      <div className="footer">
+        <img src={logo} className="App-logo" alt="logo" />
       </div>
     </div>
   );

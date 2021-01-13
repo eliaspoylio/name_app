@@ -1,5 +1,11 @@
+.App{
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+}
+
 .App-logo {
-  height: 40vmin;
+  height: 8vmin;
   pointer-events: none;
 }
 
@@ -10,59 +16,32 @@
 }
 
 .App-header {
-  background-color: #282c34;
+
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.App-content {
-  background-color: #282c34;
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.App-element {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: top;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.item {
+  flex: 0 49%;
+  height: 100px;
+  margin-bottom: 2%; /* (100-32*3)/2 */
 }
 
-.App-elementl {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: top;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-elementr {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: top;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 @keyframes App-logo-spin {
   from {
