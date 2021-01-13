@@ -58,7 +58,7 @@ function App() {
     } else {
       setSum(namesToShow.map(name => name.amount).reduce((acc, name) => name + acc));
     }
-  });
+  }, [namesToShow] )
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -81,19 +81,28 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
       </header>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Search by name</p>
-          <input type="text" onChange={event => setSearch(event.target.value)} value={search} />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-      <p>{searchedName.name}, {searchedName.amount}</p>
-      <p>{sum}</p>
-      <button onClick={() => setOrder('Name')}>By Name</button>
-      <button onClick={() => setOrder('Amount')}>By Amount</button>
-      <h1>Names by {order}</h1>
-      <ChangeOrder data={namesToShow} orderBy={order} />
+      <div className="App-content">
+        <div className="App-element">
+          <form onSubmit={handleSubmit}>
+            <label>
+              <p>Search by name</p>
+              <input type="text" onChange={event => setSearch(event.target.value)} value={search} />
+            </label>
+            <button type="submit">Search</button>
+          </form>
+          <p>{searchedName.name}, {searchedName.amount}</p>
+        </div>
+        <div className="App-element">
+          <p>Sum of all the names</p>
+          <p>{sum}</p>
+        </div>
+        <div className="App-element">
+          <button onClick={() => setOrder('Name')}>By Name</button>
+          <button onClick={() => setOrder('Amount')}>By Amount</button>
+          <h1>Names by {order}</h1>
+          <ChangeOrder data={namesToShow} orderBy={order} />
+        </div>
+      </div>
     </div>
   );
 }
