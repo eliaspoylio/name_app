@@ -17,7 +17,7 @@ Response is all the names and amounts.
 ```
 /api/:name
 ```
-Response is all the names and amount of the specified name.
+Response is the name and amount of the specified name.
 
 ## React client
 
