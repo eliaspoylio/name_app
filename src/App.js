@@ -79,7 +79,7 @@ function App() {
           This page displays data fetched from API.
         </p>
         <p>
-          This page displays data fetched from API.
+          The app makes the `/api/all` -request when loaded and then calculates the amount of all the people presented in the response data. The user can toggle the order in which the data is presented. There's also a form and the user can search a specific name with the `/api/:name` -request from the form.
         </p>
       </header>
       <div className="App-container">
