@@ -1,7 +1,7 @@
 # Simple Express REST API and some data manipulation with React
 
 ## REST API
-Express API is written in [server.js](https://github.com/eliaspoylio/name_app/blob/master/server.js). You can start with:
+Express API is written in [server.js](https://github.com/eliaspoylio/name_app/blob/master/server.js). You can start it with:
 ```
 node .\server.js
 ```
@@ -13,6 +13,7 @@ The API handles two kind of requests:
 ```
 Response is all the names and amounts.
 
+
 2. Name
 ```
 /api/:name
@@ -22,6 +23,11 @@ Response is the name and amount of the specified name.
 ## React client
 
 The app makes the `/api/all` -request when loaded and then calculates the amount of all the people presented in the response data. The user can toggle the order in which the data is presented. There's also a form and the user can search a specific name with the `/api/:name` -request from the form.
+
+Start the development build with:
+```
+npm start
+```
 
 ## TODO
 - error response
