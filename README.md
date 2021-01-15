@@ -30,9 +30,11 @@ npm start
 ```
 
 ## TODO
+- token/session id for the requests
+
 - error response
 
-- What about scandic letters in names?
+- html-page for the API
 
 ## 
 When building and displaying react frontend as default

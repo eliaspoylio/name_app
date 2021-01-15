@@ -24,7 +24,7 @@ server.get('/api/:name', (req, res) => {
 
 //default
 server.get('*', (req, res) => {
-    res.send('Hello');
+    res.send('Try the two endpoints: /api/all & /api/:name');
 });
 
 const port = process.env.PORT || 2020; server.listen(port, () => {
